@@ -58,19 +58,14 @@ Kappa.test.revised.fn<-function (x, y = NULL, null.value = 0, conf.level = 0.95)
 }
 
 
-####################
-# Running analyses #
-####################
-
-# Here are the data from a 2 x 2 table
+###################
+# ui file for app #
+###################
 
 ui <- fluidPage(
   
-  # Application title
-  titlePanel("Cohen's Kappa calculator"),
-  
-  # Sidebar with a slider input for number of digits to round 
-  sidebarLayout( fluid = TRUE, 
+    titlePanel("Cohen's Kappa calculator"),
+      sidebarLayout( fluid = TRUE, 
                  sidebarPanel(
                   numericInput("numcats", label = "Number of Categories", min = 2, max = 3, value = 2),
                   uiOutput("numbers"),
@@ -84,7 +79,10 @@ ui <- fluidPage(
   )
 )
 
-# Define server logic required to draw a histogram
+#######################
+# server file for app #
+#######################
+
 server <- function(input, output) {
 
   output$numbers<-renderUI({
@@ -145,6 +143,12 @@ server <- function(input, output) {
   
 }
 
+#######################
+# Run the application #
+#######################
 
-# Run the application 
 shinyApp(ui = ui, server = server)
+
+#######
+# END #
+#######
